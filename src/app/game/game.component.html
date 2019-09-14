@@ -1,0 +1,32 @@
+<div class="row shadow-sm text-center title">
+  <div class="col-1">logo</div>
+  <div class="col-3">
+    <div *ngIf="gameOver" class="text-center">Best Score: {{bestScore}}</div>
+  </div>
+  <div class="col-4">
+    <div>Score: {{score}}</div>
+  </div>
+  <div class="col-3">
+    <div *ngIf="gameOver" class="text-center">
+      <div>Game Over!
+        <a target="game" href="game">Start New Game</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-1">reset</div>
+</div>
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-10">
+    <div *ngIf="!gameOver" class="text-center">
+      <div *ngFor="let tile of tiles;" class="tile-element"
+        [ngStyle]="{ 'background-color':tile.color, 'color':tile.color }" (click)="onTile(tile.different)">{{ tile.id }}
+      </div>
+    </div>
+    <div *ngIf="gameOver" class="text-center">
+      <div *ngFor="let tile of tiles;" class="tile-element" [ngStyle]="{ 'background-color':tile.color }">
+        {{ tile.color.substring(3) }}</div>
+    </div>
+  </div>
+  <div class="col-1"></div>
+</div>
